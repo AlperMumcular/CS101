@@ -1,0 +1,140 @@
+/**
+ * A simple Java class!
+ */
+public class RationalNumber 
+{
+   // properties
+   private int numerator;
+   private int denominator;
+   private int gcd;
+
+   // constructors
+   public RationalNumber( int n, int d ) {
+      this.gcd = gcd( n, d );
+      this.numerator = setN( n );
+      this.denominator = setD( d );
+      if( denominator < 0 ){
+         this.numerator = -1 * this.numerator;
+         this.denominator = -1 * this.denominator;
+      }
+   }
+   
+   // get methods
+   public int getN() {
+      return this.numerator;
+   }
+   
+   public int getD() {
+      return this.denominator;
+   }
+   
+   // set methods
+   private int setN( int n ) {
+      return n / gcd;
+   }
+   
+   private int setD( int d ) {
+      return d / gcd; 
+   }
+   
+   // methods
+   private int gcd( int n, int d ) {
+      int commonDivisor = 1;
+      for( int i = Math.abs( Math.min( n, d ) ); commonDivisor == 1 && i >= 1; i-- ) { 
+         if( Math.abs(n) % i == 0 && Math.abs(d) % i == 0 ) {
+            commonDivisor = i;
+         }
+      }
+      return commonDivisor;
+   }
+   
+   public RationalNumber add( RationalNumber other ) {
+   int numerator;
+   int denominator;
+   numerator = this.getN() * other.getD() + other.getN() * this.getD();
+   denominator = this.getD() * other.getD();
+   return new RationalNumber( numerator, denominator );
+   }
+
+   public RationalNumber substract( RationalNumber other ) {
+      int numerator;
+      int denominator;
+      numerator = this.getN() * other.getD() - other.getN() * this.getD();
+      denominator = this.getD() * other.getD();
+      return new RationalNumber( numerator, denominator );
+   }
+   
+   public RationalNumber multiply( RationalNumber other ) {
+      int numerator;
+      int denominator;
+      numerator = this.getN() * other.getN();
+      denominator = this.getD() * other.getD();
+      return new RationalNumber( numerator, denominator );
+   }
+   
+   public RationalNumber divide( RationalNumber other ) {
+      int numerator;
+      int denominator;
+      numerator = this.getN() * other.getD();
+      denominator = this.getD() * other.getN();
+      return new RationalNumber( numerator, denominator );
+   }
+   
+   public RationalNumber reciprocate() {
+      int numerator;
+      int denominator;
+      numerator = this.getD();
+      denominator = this.getN();
+      return new RationalNumber( numerator, denominator );
+   }
+   
+   // instance methods
+   public boolean isInteger() {
+      if( Math.abs(((double) this.numerator / this.denominator)) % 1 == 0 )
+         return true;
+      else
+         return false;
+   }
+   
+   public boolean isZero() {
+      if( this.numerator == 0 ) 
+         return true;
+      else 
+         return false;
+   }
+   
+   public boolean isLessThan( RationalNumber other ) {
+      double first;
+      double second;
+      first = (double) this.numerator / this.denominator;
+      second = (double) other.numerator / other.denominator;
+      if( first < second )
+         return true;
+      else
+         return false;
+   }
+   
+   public boolean equals( RationalNumber other ) {
+      double first;
+      double second;
+      first = (double) this.numerator / this.denominator;
+      second = (double) other.numerator / other.denominator;
+      if( first == second )
+         return true;
+      else
+         return false;
+   }
+   
+   @Override
+   public String toString() {
+      if( isZero() )
+         return "0/1";
+      else if( isInteger() ) {
+         int n;
+         n = this.numerator / this.denominator;
+         return n + "/1";
+      }
+      else
+         return this.numerator + "/" + this.denominator;
+   }
+}

@@ -1,0 +1,24 @@
+/**
+ * Balanced class for getting 2 values from another class method
+ */
+public class Balanced 
+{
+   // properties
+   private boolean isBalanced;
+   private int index;
+   
+   // constructors
+   public Balanced( boolean isBalanced, int index ) {
+      this.isBalanced = isBalanced;
+      this.index = index;
+   } 
+      
+   // get methods
+   public boolean getIsBalanced() {
+      return this.isBalanced;
+   }
+   
+   public int getIndex() {
+      return this.index;
+   }
+}

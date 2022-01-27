@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+/**
+ * time difference calculator
+ * @author Alper Mumcular
+ * @version 21.02.2020
+ */ 
+public class Lab02d
+{
+   public static void main( String[] args )
+   {
+      Scanner scan = new Scanner( System.in );
+
+      // constants
+      String FIRST_TIME = "Please enter the first time: ";
+      String SECOND_TIME = "Please enter the second time: ";
+      int HOUR_DENOMINATOR = 100;
+      // variables
+      int firstHour;
+      int secondHour;
+      int hour;
+      int minute;
+      // program code
+      System.out.print(FIRST_TIME);
+      firstHour = scan.nextInt();
+      System.out.print(SECOND_TIME);
+      secondHour = scan.nextInt();
+      hour = (secondHour - firstHour) / HOUR_DENOMINATOR;
+      minute = 
+      System.out.println(hour + " Hours " + minute + " Minutes");
+   }
+
+}

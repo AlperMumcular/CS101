@@ -1,0 +1,59 @@
+/**
+ * MyArray application
+ * @author Alper Mumcular
+ * @version 22.05.2020
+ */ 
+public class TestMyArray
+{
+   public static void main( String[] args )
+   {
+
+      // variables
+      MyArray Test1;
+      MyArray Test2;
+      
+      // program code
+      Test1 = new MyArray(  );
+      Test2 = new MyArray();
+
+      // findLucky()
+      System.out.println( "---------------- findLucky() --------------------" );
+      System.out.println( "Array: " + Test1 );
+      Test1.setArray( new int[6] );
+      System.out.println( "The lucky integer is " + Test1.findLucky() + "\n" );
+      
+      // isBalanced()
+      System.out.println( "---------------- isBalanced() --------------------" ); 
+      System.out.println( "Array: " + Test1 );
+      Balanced test;
+      test = Test1.isBalanced();
+      if( test.getIsBalanced() )
+         System.out.println( "The array is balanced and the last index of the first part is " 
+                               + test.getIndex() + "\n" );
+      else
+         System.out.println( "The array is not balanced.\n" );      
+      
+      // merge()
+      System.out.println( "---------------- merge() --------------------" );
+      System.out.println( "Array: " + Test1 );
+      System.out.println( "array to be merged with: " + Test1 );
+      Test1.merge( Test1.getArray() );
+      System.out.println( "Merged Array: " + Test1 + "\n" );
+      
+      // randomize()
+      System.out.println( "---------------- randomize() --------------------" );
+      System.out.println( "Array: " + Test1 );
+      Test1.randomize();
+      System.out.println( "The array has been randomized." );
+      System.out.println( "Array:" + Test1 + "\n" );
+      
+      // sort()
+      System.out.println( "---------------- sort() --------------------" );
+      System.out.println( "Array: " + Test1 );
+      Test1.sort();
+      System.out.println( "The array has been randomized." );
+      System.out.println( "Array: " + Test1 + "\n" );
+
+   }
+
+}

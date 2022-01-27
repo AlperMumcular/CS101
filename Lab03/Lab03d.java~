@@ -1,0 +1,81 @@
+import java.util.Scanner;
+
+/**
+ * Does it form a triangle?
+ * @author Alper Mumcular
+ * @version 05.03.2020
+ */ 
+public class Lab03d
+{
+   public static void main( String[] args )
+   {
+      Scanner scan = new Scanner( System.in );
+            
+      // variables
+      int a;
+      int b;
+      int c;
+      boolean x;
+      boolean y;
+      boolean z;
+      boolean j;
+      boolean k;
+      boolean l;
+      boolean m;
+      int triangleMin;
+      int triangleMax;
+            
+      // program code
+      System.out.print("Please enter the side lengths: ");
+      a = scan.nextInt();
+      b = scan.nextInt();
+      c = scan.nextInt();
+      z = (a > 0) && (b > 0) && (c > 0);
+      
+      //check numbers (are they positive)
+      if (!z) {
+         System.out.println("Side lengths: " + a + " " + b + " " + c);
+         System.out.println("The side lengths must be positive.");
+      }
+      
+      //triangle conditions
+      triangleMin = Math.abs(a - b);
+      triangleMax = Math.abs(a + b);
+      
+      //boolean values
+      x = triangleMin < c;
+      y = triangleMax > c;
+      j = (a == b) && (b == c);
+      k = (a == b) && (a != c);
+      l = (a == c) && (a != b);
+      m = (b == c) && (a != b);
+      
+      //check if it forms a triangle
+      if ((!x || !y) && z) {
+         System.out.println("Side lengths: " + a + " " + b + " " + c);
+         System.out.println("The numbers do not form a triangle.");                  
+      }
+      else if ((x && y) && z) {
+         if(j) {
+            System.out.println("Side lengths: " + a + " " + b + " " + c);
+            System.out.println("The numbers form a EQUILATERAL triangle.");
+         }
+         else if(k) {
+            System.out.println("Side lengths: " + a + " " + b + " " + c);
+            System.out.println("The numbers form a ISOSCELES triangle.");
+         }
+         else if (l) {
+            System.out.println("Side lengths: " + a + " " + b + " " + c);
+            System.out.println("The numbers form a ISOSCELES triangle."); 
+         }
+         else if (m) {
+            System.out.println("Side lengths: " + a + " " + b + " " + c);
+            System.out.println("The numbers form a ISOSCELES triangle."); 
+         }
+         else {
+            System.out.println("Side lengths: " + a + " " + b + " " + c);
+            System.out.println("The numbers form a SCALENE triangle."); 
+         }
+      }                  
+   }   
+}
