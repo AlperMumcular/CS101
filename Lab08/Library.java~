@@ -1,0 +1,157 @@
+/**
+ * represents a library
+ */
+public class Library 
+{
+   // properties
+   private LibraryBook b1, b2, b3, b4;
+
+   // constructors
+   public Library() {
+      this.b1 = setB1( b1 );
+      this.b2 = setB2( b2 );
+      this.b3 = setB3( b3 );
+      this.b4 = setB4( b4 );  
+   }
+   
+   // accessor methods
+   public LibraryBook getB1() {
+      return b1;
+   }
+   
+   public LibraryBook getB2() {
+      return b2;
+   }
+   
+   public LibraryBook getB3() {
+      return b3;
+   }
+   
+   public LibraryBook getB4() {
+      return b4;
+   }
+   
+   // mutator methods
+   private LibraryBook setB1( LibraryBook other ) {
+      b1 = other;
+      return b1;
+   }
+   
+   private LibraryBook setB2( LibraryBook other ) {
+      b2 = other;
+      return b2;
+   }
+   
+   private LibraryBook setB3( LibraryBook other ) {
+      b3 = other;
+      return b3;
+   }
+   
+   private LibraryBook setB4( LibraryBook other ) {
+      b4 = other;
+      return b4;
+   }
+   
+   // other methods
+   
+   /**
+    * checks are there any books 
+    * 
+    * @return boolean result
+    */
+   public boolean isEmpty() {
+      if( b1 == null && b2 == null && b3 == null && b4 == null )
+         return true;
+      else 
+         return false;
+   }
+   
+   /**
+    * represents any Library object as a String
+    * @return string result of the object
+    */
+   @Override
+   public String toString() {
+      if (isEmpty())
+         return "Library is empty.";
+      else { 
+         String str;
+         str = "";
+         if( b1 != null )
+            str += b1 + "\n";
+         if( b2 != null )
+            str += b2 + "\n";
+         if( b3 != null )
+            str += b3 + "\n";
+         if( b4 != null )
+            str += b4 + "\n";
+         return str;
+      } 
+   }
+   
+   /**
+    * adds book if the are available place
+    * @param author, title --> Author and title of the book which is going to be added to library
+    * @return boolean result
+    */
+   public boolean add( String author, String title ) {
+      if ( b1 == null ) {
+         b1 = new LibraryBook( author, title );
+         return true;
+      }
+      else if ( b2 == null ) {
+         b2 = new LibraryBook( author, title );
+         return true;
+      }
+      else if ( b3 == null ) {
+         b3 = new LibraryBook( author, title );
+         return true;
+      }
+      else if ( b4 == null ) {
+         b4 = new LibraryBook( author, title ); 
+         return true; 
+      }
+      
+      else 
+         return false;
+   }
+   
+   /**
+    * removes book if this book is in the library
+    * @param book --> which book wants to be removed from library
+    * @return boolean result
+    */
+   public boolean remove( LibraryBook book ) {
+      if( b1.equals( book ) || b2.equals( book ) || b3.equals( book ) || b4.equals( book ) ) {
+         if( b1.equals( book ) )
+            b1 = null;
+         else if( b2.equals( book ) )
+            b2 = null;
+         else if( b3.equals( book ) )
+            b3 = null;
+         else if( b4.equals( book ) )
+            b4 = null;
+         return true;
+      }
+      else
+         return false;
+   }
+   
+   /**
+    * finds the book from its title
+    * @param title --> Title of the book
+    * @returns the book 
+    */
+   public LibraryBook findByTitle( String title ) {
+      if( title.equals( b1.getTitle() ) )
+         return b1;
+      else if( title.equals( b2.getTitle() ) )
+         return b2;
+      else if( title.equals( b3.getTitle() ) )
+         return b3;
+      else if( title.equals( b4.getTitle() ) )
+         return b4;
+      else 
+         return null;
+   }
+}
