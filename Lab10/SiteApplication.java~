@@ -1,0 +1,67 @@
+import java.util.Scanner;
+
+/**
+ * __program description___ 
+ * @author __your name___
+ * @version __date__
+ */ 
+public class SiteApplication
+{
+   public static void main( String[] args )
+   {
+      Scanner scan = new Scanner( System.in );
+
+      // constants
+
+      // variables
+      String siteName;
+      Site s1;
+      int choice;
+      String ownerName;
+      String address;
+      int residents;
+      double serviceCharge;
+      double min;
+      double max;
+      
+      // program code
+      System.out.print( "Enter name of site: " );
+      siteName = scan.nextLine();
+      s1 = new Site( siteName );
+      do {
+         System.out.print( "1-Add House\n2-View Houses\n3-Search Houses by Fee\n4-Exit\nEnter Choice: " );
+         choice = scan.nextInt();
+         scan.nextLine();
+         if( choice == 1 ) {
+            System.out.print( "Enter Owner Name: " );
+            ownerName = scan.nextLine();
+            System.out.print( "Enter address: " );
+            address = scan.nextLine();
+            System.out.print( "Enter number of residents: " );
+            residents = scan.nextInt();
+            System.out.print( "Enter service charge: " );
+            serviceCharge = scan.nextDouble();
+            if( s1.addHouse( ownerName, address, residents, serviceCharge ) )  
+                  System.out.println( "House Successfully added to Site.\n" );
+         }
+         
+         else if( choice == 2 ) {
+            System.out.println( "\nList of Houses in " + siteName + "\n------------------------\n" );
+            s1.viewHouses();
+         }
+         
+         else if( choice == 3 ) {
+            System.out.print( "\nEnter minimum and maximum fee: " );
+            min = scan.nextDouble();
+            max = scan.nextDouble();
+            System.out.printf( "Houses on Site with fee between %.2f and %.2f TL\n\n", min, max );
+            System.out.println( s1.searchHouseByFee( min, max ) );
+         }
+         
+         else if( choice >= 5 )
+            System.out.println( "Invalid choice\n" );
+         
+      } while( choice != 4 );
+   }
+
+}
